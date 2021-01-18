@@ -51,9 +51,11 @@ public class OdometryCalibration extends LinearOpMode {
             ;
 
         double angle = hw.imu.getAngularOrientation().firstAngle;
-        double encoderDifference = Math.abs(Math.abs(odometry.odoLeft.getCurrentPosition()) - Math.abs(odometry.odoRight.getCurrentPosition()));
+        double encoderDifference = Math.abs(odometry.odoLeft.getCurrentPosition() - odometry.odoRight.getCurrentPosition());
+
+        double sideWheelSeparation = (encoderDifference / odometry.TICKS_PER_CM) / Math.toRadians(angle);
         double sideEncoderTickOffset = encoderDifference / angle;
-        double sideWheelSeparation = (180 * sideEncoderTickOffset) / (odometry.TICKS_PER_CM * Math.PI);
+        //double sideWheelSeparation = (sideEncoderTickOffset*odometry.TICKS_PER_CM) / (Math.PI / 180);  //(180 * sideEncoderTickOffset) / (odometry.TICKS_PER_CM * Math.PI);
         double middleTickOffset = odometry.odoCenter.getCurrentPosition() / Math.toRadians(angle);
 
         ReadWriteFile.writeFile(odometry.sideWheelSeparationFile, String.valueOf(sideWheelSeparation));
@@ -61,7 +63,14 @@ public class OdometryCalibration extends LinearOpMode {
 
         while(opModeIsActive()) {
             telemetry.addData("sideWheelSeparation", sideWheelSeparation);
+            telemetry.addData("angle", angle);
+            telemetry.addData("ticksPerCm", odometry.TICKS_PER_CM);
+            telemetry.addData("encoderDifference", encoderDifference);
             telemetry.addData("middleTickOffset", middleTickOffset);
+
+            telemetry.addData("odoLeft", odometry.odoLeft.getCurrentPosition());
+            telemetry.addData("odoCenter", odometry.odoCenter.getCurrentPosition());
+            telemetry.addData("odoRight", odometry.odoRight.getCurrentPosition());
             telemetry.update();
         }
     }

@@ -55,6 +55,10 @@ public class LocalizationTest extends LinearOpMode {
 
             telemetry.addData("X", globalSpace.getX() / odometry.TICKS_PER_CM);
             telemetry.addData("Y", globalSpace.getY() / odometry.TICKS_PER_CM);
+            telemetry.addData("odoLeft", odometry.odoLeft.getCurrentPosition());
+            telemetry.addData("odoCenter", odometry.odoCenter.getCurrentPosition());
+            telemetry.addData("odoRight", odometry.odoRight.getCurrentPosition());
+            telemetry.addData("distanceLeft", odometry.odoLeft.getCurrentPosition() / odometry.TICKS_PER_CM);
             telemetry.addData("orientation(deg)", globalSpace.getOrientation());
             telemetry.update();
         }

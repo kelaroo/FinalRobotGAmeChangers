@@ -1,8 +1,22 @@
-org/firstinspires/ftc/teamcode/OdometryCalibration.java
- org.firstinspires.ftc.teamcode.OdometryCalibration
+org/firstinspires/ftc/teamcode/Hardware/HardwareConfig.java
+ org.firstinspires.ftc.teamcode.Hardware.HardwareConfig
+org/firstinspires/ftc/teamcode/Util/GlobalCoordinateSystem.java
+ org.firstinspires.ftc.teamcode.Util.GlobalCoordinateSystem
+org/firstinspires/ftc/teamcode/Autonomous/OdometryCalibration.java
+ org.firstinspires.ftc.teamcode.Autonomous.OdometryCalibration
+org/firstinspires/ftc/teamcode/Test/OdometryCalibration.java
+ org.firstinspires.ftc.teamcode.Test.OdometryCalibration
+org/firstinspires/ftc/teamcode/TeleOp/LocalizationTest.java
+ org.firstinspires.ftc.teamcode.TeleOp.LocalizationTest
+org/firstinspires/ftc/teamcode/Test/MyOdometryOpmode.java
+ org.firstinspires.ftc.teamcode.Test.MyOdometryOpmode
 org/firstinspires/ftc/teamcode/BuildConfig.java
  org.firstinspires.ftc.teamcode.BuildConfig
-org/firstinspires/ftc/teamcode/HardwareConfig.java
- org.firstinspires.ftc.teamcode.HardwareConfig
-org/firstinspires/ftc/teamcode/BasicTeleOp.java
- org.firstinspires.ftc.teamcode.BasicTeleOp
+org/firstinspires/ftc/teamcode/Hardware/OdometryConfig.java
+ org.firstinspires.ftc.teamcode.Hardware.OdometryConfig
+org/firstinspires/ftc/teamcode/Test/GlobalCoordinatePositionUpdateSample.java
+ org.firstinspires.ftc.teamcode.Test.GlobalCoordinatePositionUpdateSample
+org/firstinspires/ftc/teamcode/TeleOp/BasicTeleOp.java
+ org.firstinspires.ftc.teamcode.TeleOp.BasicTeleOp
+org/firstinspires/ftc/teamcode/Test/OdometryGlobalCoordinatePosition.java
+ org.firstinspires.ftc.teamcode.Test.OdometryGlobalCoordinatePosition

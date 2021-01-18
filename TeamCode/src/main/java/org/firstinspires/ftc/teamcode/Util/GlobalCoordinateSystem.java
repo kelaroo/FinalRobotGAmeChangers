@@ -25,7 +25,7 @@ public class GlobalCoordinateSystem implements Runnable {
         odometry = odo;
         sleepTime = threadSleepDelay;
 
-        encoderWheelDistance = Double.parseDouble(ReadWriteFile.readFile(odo.sideWheelSeparationFile).trim()) * odo.TICKS_PER_CM;
+        encoderWheelDistance = Double.parseDouble(ReadWriteFile.readFile(odo.sideWheelSeparationFile).trim());
         middleEncoderTickOffset = Double.parseDouble(ReadWriteFile.readFile(odo.middleTickOffsetFile).trim());
     }
 
@@ -37,7 +37,7 @@ public class GlobalCoordinateSystem implements Runnable {
         double leftChange = leftEncoderPosition - OLDLeftEncoderPosition;
         double rightChange = rightEncoderPosition - OLDRightEncoderPosition;
 
-        changeInOrientation = (leftChange-rightChange) / encoderWheelDistance;
+        changeInOrientation = (leftChange-rightChange) / (encoderWheelDistance * odometry.TICKS_PER_CM);
         robotOrientation += changeInOrientation;
 
         double rawHorizontalChange = middleEncoderPosition - OLDMiddleEncoderPosition;
@@ -46,8 +46,8 @@ public class GlobalCoordinateSystem implements Runnable {
         double sides = (rightChange + leftChange) / 2;
         double frontBack = horizontalChange;
 
-        globalX = sides * Math.sin(robotOrientation) + frontBack * Math.cos(robotOrientation);
-        globalY = sides * Math.cos(robotOrientation) - frontBack * Math.sin(robotOrientation);
+        globalX += sides * Math.sin(robotOrientation) + frontBack * Math.cos(robotOrientation);
+        globalY += sides * Math.cos(robotOrientation) - frontBack * Math.sin(robotOrientation);
 
         OLDLeftEncoderPosition = leftEncoderPosition;
         OLDRightEncoderPosition = rightEncoderPosition;
