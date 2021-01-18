@@ -65,11 +65,11 @@ public class GlobalCoordinateSystem implements Runnable {
     public void run() {
         while(isRunning) {
             positionUpdate();
-        }
-        try {
-            Thread.sleep(sleepTime);
-        }catch (InterruptedException e) {
-            e.printStackTrace();
+            try {
+                Thread.sleep(sleepTime);
+            }catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

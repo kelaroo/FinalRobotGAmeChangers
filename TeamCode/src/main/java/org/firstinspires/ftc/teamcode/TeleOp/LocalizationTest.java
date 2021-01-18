@@ -59,6 +59,6 @@ public class LocalizationTest extends LinearOpMode {
             telemetry.update();
         }
 
-        positionUpdate.stop();
+        globalSpace.stop();
     }
 }
