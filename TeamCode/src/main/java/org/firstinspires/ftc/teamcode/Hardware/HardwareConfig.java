@@ -4,9 +4,11 @@ import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.Servo;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.zip.ZipError;
 
 public class HardwareConfig {
     public DcMotor leftBack;
@@ -14,6 +16,9 @@ public class HardwareConfig {
     public DcMotor leftFront;
     public DcMotor rightFront;
     public List<DcMotor> lDriveMotors;
+
+    public Servo apucat;
+    public DcMotor brat;
 
     public BNO055IMU imu;
 
@@ -31,6 +36,13 @@ public class HardwareConfig {
 
         leftBack.setDirection(DcMotorSimple.Direction.REVERSE);
         leftFront.setDirection(DcMotorSimple.Direction.REVERSE);
+
+        brat = hw.get(DcMotor.class, "odoRight");
+        brat.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        brat.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+
+        apucat = hw.get(Servo.class, "apucat");
+        apucat.setPosition(0);
 
         BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
         parameters.angleUnit = BNO055IMU.AngleUnit.DEGREES;

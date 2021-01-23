@@ -38,5 +38,20 @@ public class BasicTeleOp extends OpMode {
         hw.leftBack.setPower(LB);
         hw.rightFront.setPower(RF);
         hw.rightBack.setPower(RB);
+
+        double lTrigger = gamepad1.left_trigger;
+        double rTrigger = gamepad1.right_trigger;
+        if(lTrigger > 0.1 || rTrigger > 0.1) {
+            hw.brat.setPower(rTrigger - lTrigger);
+        } else {
+            hw.brat.setPower(0);
+        }
+
+        if(gamepad1.left_bumper) {
+            hw.apucat.setPosition(1);
+        } else if(gamepad1.right_bumper) {
+            hw.apucat.setPosition(0);
+        }
+
     }
 }
